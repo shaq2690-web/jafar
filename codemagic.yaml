@@ -8,11 +8,11 @@ workflows:
         PACKAGE_NAME: "com.yourcompany.alarmapp"
     scripts:
       - name: Set Android SDK location
-        script: | 
+        script: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
       - name: Build Android release without signing
-        script: | 
-          ./gradlew assembleRelease -x test  # اینجا از دستور build استفاده می‌شود که بدون امضا است.
+        script: |
+          ./android/gradlew assembleRelease -x test  # مسیر کامل gradlew در پوشه android
     artifacts:
       - app/build/outputs/**/*.apk
     publishing:
