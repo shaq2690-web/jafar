@@ -12,9 +12,9 @@ workflows:
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
       - name: Build Android release without signing
         script: |
-          ./gradlew assembleRelease -x test  # اطمینان از وجود gradlew و مسیر صحیح آن
+          ./gradlew assembleRelease -x test  # دستور Gradle برای ساخت APK بدون امضا
     artifacts:
-      - app/build/outputs/**/*.apk
+      - app/build/outputs/**/*.apk  # محل خروجی APK
     publishing:
       email:
         recipients:
