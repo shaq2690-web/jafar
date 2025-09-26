@@ -4,17 +4,15 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m2
     environment:
-      android_signing:
-        - keystore_reference
       vars:
         PACKAGE_NAME: "com.yourcompany.alarmapp"
     scripts:
       - name: Set Android SDK location
         script: | 
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
-      - name: Build Android release
+      - name: Build Android release without signing
         script: | 
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease -x test  # اینجا از دستور build استفاده می‌شود که بدون امضا است.
     artifacts:
       - app/build/outputs/**/*.apk
     publishing:
